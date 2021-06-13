@@ -5,13 +5,18 @@ import {
   HttpStatus,
   Param,
   UseFilters,
+  UseGuards,
+  UseInterceptors,
 } from '@nestjs/common'
 import { HttpExceptionFilter } from 'src/common/filters/http_exception.filter'
+import { AuthGuard } from 'src/common/guards/auth.guard'
+import { LoggingInterceptor } from 'src/common/interceptors/logging.interceptor'
 import { TestPipe } from 'src/common/pipes/test.pipe'
 import { UsersService } from './users.service'
 
 @Controller('users')
 @UseFilters(HttpExceptionFilter)
+@UseInterceptors(LoggingInterceptor)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
