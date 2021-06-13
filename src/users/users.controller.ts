@@ -36,6 +36,7 @@ export class UsersController {
   }
 
   @Get('override')
+  @UseGuards(AuthGuard) // Guardを登録(本当はPostとかに使うとよき)
   getOverRideException(): string {
     throw new HttpException(
       { status: HttpStatus.FORBIDDEN, error: 'override custom' },
