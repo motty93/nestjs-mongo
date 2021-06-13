@@ -46,3 +46,8 @@ $ nest g mi logger
 - リクエストの解析
 - レスポンスヘッダーの追加
 - 不正アクセス禁止
+
+## 例外について
+`throw new HttpException`を呼び出すだけでおｋ。
+
+http statusに応じたメッセージとステータスをjsonで返してくれる。

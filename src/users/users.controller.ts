@@ -20,6 +20,14 @@ export class UsersController {
 
   @Get('throw')
   getException(): string {
-    throw new HttpException('FOrbidden', HttpStatus.FORBIDDEN)
+    throw new HttpException('Forbidden', HttpStatus.FORBIDDEN)
+  }
+
+  @Get('override')
+  getOverRideException(): string {
+    throw new HttpException(
+      { status: HttpStatus.FORBIDDEN, error: 'override custom' },
+      HttpStatus.FORBIDDEN,
+    )
   }
 }
