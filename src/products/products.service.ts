@@ -17,8 +17,8 @@ export class ProductsService {
     return [...this.products]
   }
 
-  getProduct(productId: string) {
-    const product = this.findProduct(productId)[0]
+  getProduct(id: string) {
+    const [product, _] = this.findProduct(id)
 
     return { ...product }
   }
@@ -36,6 +36,11 @@ export class ProductsService {
       updatedProduct.price = price
     }
     this.products[index] = updatedProduct
+  }
+
+  removeProduct(id: string) {
+    const [_, index] = this.findProduct(id)
+    this.products.splice(index, 1)
   }
 
   private findProduct(id: string): [Product, number] {

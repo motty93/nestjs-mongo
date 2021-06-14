@@ -6,6 +6,7 @@ import {
   Post,
   Param,
   Patch,
+  Delete,
 } from '@nestjs/common'
 import { ProductsService } from './products.service'
 
@@ -51,6 +52,13 @@ export class ProductsController {
       prodDesc,
       prodPrice,
     )
+
+    return null
+  }
+
+  @Delete(':id')
+  removeProduct(@Param('id') productId: string): any {
+    this.productsService.removeProduct(productId)
 
     return null
   }
