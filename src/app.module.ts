@@ -1,8 +1,11 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
+
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { LoggerMiddleware } from './common/middleware/logger.middleware'
+
+import { ProductsModule } from './products/products.module'
 import { UsersModule } from './users/users.module'
 
 @Module({
@@ -11,6 +14,7 @@ import { UsersModule } from './users/users.module'
       envFilePath: '.env',
     }),
     UsersModule,
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
